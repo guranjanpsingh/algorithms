@@ -35,6 +35,7 @@ class Tree:
         :return:
         """
         self.root.inOrder()
+
     def postOrderTraversal(self):
         """
         Post Order traversal of the tree. i.e. left -> right -> root
@@ -43,6 +44,10 @@ class Tree:
         self.root.postOrder()
 
     def levelOrderTraversal(self):
+        """
+        Level Order Traversal of the Tree. Print nodes left to right and level by level starting with Tree root
+        :return:
+        """
         self.root.levelOrder()
         
     def remove(self, key):
@@ -190,7 +195,16 @@ class TreeNode:
                 self.right.postOrder()
             print(self.key)
 
+    # this uses the Queue data structure that I have implemented and is imported at the top
     def levelOrder(self):
+        """
+        level order traversal
+        :return:
+        """
+        # use a que to keep track of child nodes
+        # start with the root node (which gets passed in)
+        # add node to the queue, print its value, dequeue it, if it has childrent enqueue them
+        # repeat till we reach the end of the queue
         if(self):
             que = queue.Queue()
             que.enqueue(self)

@@ -1,3 +1,4 @@
+import queue
 class Tree:
     """
     Represents a binary search tree
@@ -41,6 +42,9 @@ class Tree:
         """
         self.root.postOrder()
 
+    def levelOrderTraversal(self):
+        self.root.levelOrder()
+        
     def remove(self, key):
         """
         remove the node that contains the key
@@ -186,7 +190,18 @@ class TreeNode:
                 self.right.postOrder()
             print(self.key)
 
-
+    def levelOrder(self):
+        if(self):
+            que = queue.Queue()
+            que.enqueue(self)
+            while que.front != que.back:
+                node = que.peek()
+                print(node.key)
+                que.dequeue()
+                if node.left:
+                    que.enqueue(node.left)
+                if node.right:
+                    que.enqueue(node.right)
 
 def test():
     """
@@ -210,6 +225,8 @@ def test():
     tree.preOrderTraversal()
     print()
     tree.postOrderTraversal()
+    print()
+    tree.levelOrderTraversal()
 
 if __name__ == '__main__':
     test()
